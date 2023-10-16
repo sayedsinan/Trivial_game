@@ -33,13 +33,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home:const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required String title});
+ const  MyHomePage({super.key, required String title});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -53,43 +53,52 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 100,right: 10),
-              child: Text("The Trivial Game",style: TextStyle(fontSize: 40,color: Colors.white),),
+          const   Padding(
+              padding:  EdgeInsets.only(bottom: 100, right: 10),
+              child: Text(
+                "The Trivial Game",
+                style: TextStyle(fontSize: 40, color: Colors.white),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: TextFormField(
                   controller: numberInputController,
                   keyboardType: TextInputType.number,
                   cursorColor: Colors.white,
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(), hintText: 'numbers'),
                 ),
               ),
             ),
-            SizedBox(height: 30,),
+            const SizedBox(
+              height: 30,
+            ),
             ElevatedButton(
                 onPressed: () async {
-                  final _number = numberInputController.text;
-                  final result =await getNumberFirst(number: _number);
+                  final number = numberInputController.text;
+                  final result = await getNumberFirst(number: number);
                   // print()
                   setState(() {
-                    resultText = result.trivaialtext??'';
+                    resultText = result.trivaialtext ?? 'This is invalid';
                   });
                 },
-                child: Text('click')),
-                SizedBox(height: 30,),
+                child:const  Text('click')),
+          const   SizedBox(
+              height: 30,
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 20,right: 30),
-              child: Text(resultText ?? 'Nothing to display',style: TextStyle(color:Colors.white),),
+              padding: const EdgeInsets.only(left: 20, right: 30),
+              child: Text(
+                resultText ?? 'Nothing to display',
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
